@@ -1,0 +1,67 @@
+---
+// src/components/VehicleSelector.astro
+const brands = ['Honda', 'Toyota', 'Mitsubishi', 'Daihatsu', 'Ford'];
+const modelsByBrand = {
+  'Honda': ['Civic 2013', 'Accord', 'CR-V', 'Pilot'],
+  'Toyota': ['Corolla', 'Camry', 'RAV4', 'Hilux'],
+  'Mitsubishi': ['Lancer', 'Outlander', 'Pajero', 'Montero'],
+  'Daihatsu': ['Terios', 'Mira', 'Sirion', 'Charade'],
+  'Ford': ['Fiesta', 'Focus', 'Escape', 'Ranger']
+};
+
+const { brand, setBrand } = Astro.props;
+const { model, setModel } = Astro.props;
+---
+
+<div class="vehicle-selector">
+  <div class="input-group">
+    <label for="brand">Marca</label>
+    <select id="brand" value={brand} onChange={(e) => setBrand(e.target.value)}>
+      <option value="">Seleccione marca</option>
+      {brands.map(b => (
+        <option value={b}>{b}</option>
+      ))}
+    </select>
+  </div>
+  
+  <div class="input-group">
+    <label for="model">Modelo</label>
+    <select 
+      id="model" 
+      value={model} 
+      onChange={(e) => setModel(e.target.value)}
+      disabled={!brand}
+    >
+      <option value="">Seleccione modelo</option>
+      {brand && modelsByBrand[brand].map(m => (
+        <option value={m}>{m}</option>
+      ))}
+    </select>
+  </div>
+</div>
+
+<style>
+  .vehicle-selector {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+  }
+</style>

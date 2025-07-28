@@ -1,0 +1,42 @@
+---
+// src/components/RouteResults.astro
+const { route } = Astro.props;
+const { estimatedCost } = Astro.props;
+---
+
+<div class="route-results">
+  <h3>Rutas Disponibles</h3>
+  
+  {route ? (
+    <div class="route-info">
+      <p><strong>{route.name}</strong>: {route.time} - {route.distance}</p>
+      <p class="estimated-cost">Gasto estimado: {estimatedCost} lps</p>
+    </div>
+  ) : (
+    <p>Seleccione origen, destino y vehículo para calcular la ruta</p>
+  )}
+</div>
+
+<style>
+  .route-results {
+    margin-top: 30px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  h3 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+  
+  .route-info {
+    margin-top: 10px;
+  }
+  
+  .estimated-cost {
+    font-weight: bold;
+    color: #e74c3c;
+    font-size: 18px;
+  }
+</style>
