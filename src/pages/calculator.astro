@@ -1,0 +1,19 @@
+---
+// src/pages/calculator.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import CombustibleCalculator from '../components/CombustibleCalculator.jsx';
+---
+
+<MainLayout>
+  <div class="calculator-page">
+    <CombustibleCalculator client:load />
+  </div>
+</MainLayout>
+
+<style>
+  .calculator-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+</style>

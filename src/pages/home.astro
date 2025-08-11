@@ -1,0 +1,122 @@
+---
+// src/pages/home.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import '../styles/global.css';
+---
+
+<MainLayout>
+  <div class="home-container">
+    <section class="hero">
+      <h1>Fuel Saver</h1>
+      <p class="subtitle">Optimiza tus viajes y ahorra combustible en Tegucigalpa</p>
+      <a href="/calculator" class="cta-button">Usar Calculadora</a>
+    </section>
+
+    <section class="features">
+      <div class="feature-card">
+        <h2>🚗 Calcula tu consumo</h2>
+        <p>Obtén estimaciones precisas de combustible para tus rutas diarias.</p>
+      </div>
+      <div class="feature-card">
+        <h2>🗺️ Compara rutas</h2>
+        <p>Descubre qué ruta es más económica en términos de combustible.</p>
+      </div>
+      <div class="feature-card">
+        <h2>⚙️ Personaliza</h2>
+        <p>Ajusta los valores de consumo según tu experiencia de manejo.</p>
+      </div>
+    </section>
+
+    <section class="about">
+      <h2>¿Por qué usar esta herramienta?</h2>
+      <p>En Tegucigalpa, el tráfico puede aumentar tu consumo de combustible hasta un 15%. Nuestra calculadora te ayuda a:</p>
+      <ul>
+        <li>Planificar tus viajes de manera eficiente</li>
+        <li>Comparar rutas alternativas</li>
+        <li>Controlar tus gastos en combustible</li>
+        <li>Reducir tu huella de carbono</li>
+      </ul>
+    </section>
+  </div>
+</MainLayout>
+
+<style>
+  .home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: white;
+    color: #2c3e50;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.3s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-3px);
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .feature-card {
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-card h2 {
+    color: #3498db;
+    margin-bottom: 1rem;
+  }
+
+  .about {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+  .about h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+
+  .about ul {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .about li {
+    margin-bottom: 0.5rem;
+  }
+</style>

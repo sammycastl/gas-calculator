@@ -1,4 +1,3 @@
-// src/components/VehicleSelector.jsx
 import { useState } from 'react';
 import { vehicleData } from '../data/vehicleData';
 
@@ -18,68 +17,57 @@ export default function VehicleSelector({ brand, setBrand, model, setModel }) {
 
   return (
     <div className="vehicle-selector">
-      <div className="input-group">
-        <label htmlFor="brand">Marca</label>
+      <div className="brand-selector">
+        <label htmlFor="brand-search">Marca del vehículo</label>
         <input
+          id="brand-search"
           type="text"
           placeholder="Buscar marca..."
           value={brandSearch}
           onChange={(e) => setBrandSearch(e.target.value)}
         />
         <select 
-          id="brand" 
+          id="brand"
           value={brand} 
           onChange={(e) => {
             setBrand(e.target.value);
             setModel('');
             setModelSearch('');
           }}
+          size="5"
         >
-          <option value="">Seleccione marca</option>
+          <option value="">Seleccione una marca</option>
           {filteredBrands.map(b => (
             <option key={b} value={b}>{b}</option>
           ))}
         </select>
       </div>
       
-      <div className="input-group">
-        <label htmlFor="model">Modelo</label>
-        {brand && (
-          <>
-            <input
-              type="text"
-              placeholder="Buscar modelo..."
-              value={modelSearch}
-              onChange={(e) => setModelSearch(e.target.value)}
-              disabled={!brand}
-            />
-            <select 
-              id="model" 
-              value={model} 
-              onChange={(e) => setModel(e.target.value)}
-              disabled={!brand || filteredModels.length === 0}
-            >
-              <option value="">Seleccione modelo</option>
-              {filteredModels.map(m => (
-                <option key={m} value={m}>{m}</option>
-              ))}
-            </select>
-          </>
-        )}
-      </div>
-      
-      {model && (
-        <div className="vehicle-info">
-          <p>Consumo estimado: {vehicleData[brand][model]} km/l</p>
-          <p className="vehicle-year">Aprox. {getVehicleYear(model)}</p>
+      {brand && (
+        <div className="model-selector">
+          <label htmlFor="model-search">Modelo del vehículo</label>
+          <input
+            id="model-search"
+            type="text"
+            placeholder="Buscar modelo..."
+            value={modelSearch}
+            onChange={(e) => setModelSearch(e.target.value)}
+            disabled={!brand}
+          />
+          <select 
+            id="model"
+            value={model} 
+            onChange={(e) => setModel(e.target.value)}
+            disabled={!brand || filteredModels.length === 0}
+            size="5"
+          >
+            <option value="">Seleccione un modelo</option>
+            {filteredModels.map(m => (
+              <option key={m} value={m}>{m}</option>
+            ))}
+          </select>
         </div>
       )}
     </div>
   );
-}
-
-
-function getVehicleYear(modelName) {
-  const yearMatch = modelName.match(/\d{4}/);
-  return yearMatch ? `Modelo ${yearMatch[0]}` : "Modelo reciente";
 }
